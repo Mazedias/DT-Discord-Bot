@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from command_embeds import guildeventdata_create_embed, eventdata_create_embed, save_event, event_item_info
 from util.config import get_dc_token
-from util.data_transformation import store_new_event
+from util.storage_api import store_new_event
 
 
 TOKEN = get_dc_token()
@@ -22,7 +22,7 @@ async def on_ready():
         print(e)
 
 
-@tree.command(name="eventdata", description="Zeigt Informationen zum letzten/aktuellen Event mehrerer Gilden")
+@tree.command(name="test_eventdata", description="Zeigt Informationen zum letzten/aktuellen Event mehrerer Gilden")
 async def eventdata(interaction: discord.Interaction):
     embed = eventdata_create_embed()
     with open('compdondistibution.png', "rb") as fh:
@@ -30,7 +30,7 @@ async def eventdata(interaction: discord.Interaction):
     await interaction.response.send_message(embed=embed, file=f)
 
 
-@tree.command(name="guildeventdata", description="Zeigt Informationen zum letzen/aktuellen Event unserer Gilde")
+@tree.command(name="test_guildeventdata", description="Zeigt Informationen zum letzen/aktuellen Event unserer Gilde")
 async def guildeventdata(interaction: discord.Interaction):
     embed = guildeventdata_create_embed()
     with open('dondistribution.png', "rb") as fh:
@@ -38,7 +38,7 @@ async def guildeventdata(interaction: discord.Interaction):
     await interaction.response.send_message(embed=embed, file=f)
 
 
-@tree.command(name="newevent", description="Trage ein neues Event ein.")
+@tree.command(name="test_newevent", description="Trage ein neues Event ein.")
 @app_commands.describe(event_round="Runde")
 @app_commands.describe(item1="Item 1")
 @app_commands.describe(amount1="Startanzahl Item 1")
@@ -54,17 +54,17 @@ async def newevent(interaction: discord.Interaction,
                    item2: str, amount2: str,
                    item3: str, amount3: str,
                    item4: str, amount4: str):
-    store_new_event({item1: amount1, item2: amount2, item3: amount3, item4: amount4}, int(event_round))
+    store_new_event(event_round, item1, amount1, item2, amount2, item3, amount3, item4, amount4)
     await interaction.response.send_message("Ok.")
 
 
-@tree.command(name="saveevent", description="!!ADMINS ONLY!! Speichert die Daten zum letzten Event.")
+@tree.command(name="test_saveevent", description="!!ADMINS ONLY!! Speichert die Daten zum letzten Event.")
 async def saveevent(interaction: discord.Interaction):
     embed = save_event()
     await interaction.response.send_message(embed=embed)
 
 
-@tree.command(name="eventiteminfo", description="Zeigt Informationen über die Event Stufen")
+@tree.command(name="test_eventiteminfo", description="Zeigt Informationen über die Event Stufen")
 async def eventiteminfo(interaction: discord.Interaction):
     output = event_item_info()
     with open('util/data/output.txt', "rb") as file:

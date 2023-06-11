@@ -1,60 +1,128 @@
+"""
+Contains methods process player or event data
+"""
 import math
+from util.data_api import get_total_donations, get_active_players
 
 
-def cald_base(event_round, amount):
-    return math.ceil(int(amount) / (0.9202166811 * math.exp(event_round / 8)))
+def get_donation_mean(guild_id) -> int:
+    """
+    Calculates the the donation mean of the last/current event.
+    :param guild_id: ID of the guild
+    :return: Donation mean
+    """
+    return math.floor(get_total_donations(guild_id) / get_active_players(guild_id))
 
 
 def calc_round(event_round, base):
+    """
+    Calculates the amount of items needed for a specific round
+    :param event_round: Round
+    :param base: Base amount of the item
+    :return: Amount of items needed to complete the round
+    """
     return math.floor(int(base) * 0.9202166811 * math.exp(event_round / 8))
 
 
-def get_price(item, amount):
-    if item in deep_town_items_prices:
-        return deep_town_items_prices.get(item) * amount
-    else:
-        return -1
-
-
-def get_point_value(item, amount):
-    if item in deep_town_items_prices:
-        return math.floor(get_price(item, int(amount)) / 1000)
-    else:
-        return -1
-
-
-def get_mul_producti_time(items: dict):
-    overall_time = 0
-    print(list(items.keys()))
-    for item in list(items.keys()):
-        print(item)
-        print(overall_time)
-        overall_time += get_product_time(item, items.get(item))
-    return overall_time
-
-
-def get_product_time(item, amount):
+def cald_base(event_round, amount):
     """
-    Calculates the time in hours needed to produce the amount of items with max buildings but no boosts
+    Calculates the base amount for an item
+    :param event_round: Round
+    :param amount: Items needed to complete the next round
+    :return: Base amount of items
+    """
+    return math.ceil(int(amount) / (0.9202166811 * math.exp(int(event_round) / 8)))
+
+
+def get_item_price(item, amount):
+    """
+    Calcualtes the value of a number of items
     :param item: Item
     :param amount: Amount of the item
-    :return: Returns production time in hours
+    :return: Value of the items, if item is unknown -1
+    """
+    if item not in deep_town_items_prices:
+        return -1
+
+    return deep_town_items_prices.get(item) * amount
+
+
+def get_item_point_value(item, amount):
+    """
+    Calcualtes the point value of a number of items
+    :param item: Item
+    :param amount: Amount of the item
+    :return: Point value of the items, if item is unknown -1
+    """
+    if item not in deep_town_items_prices:
+        return -1
+
+    return math.floor(get_item_price(item, amount)/1000)
+
+
+def predict_current_round(points: int, round_data: dict):
+    """
+    Calculates the current round based on the donation points and the point value of
+    the items at the current/last event
+    :param points: Donations points of a guild
+    :param round_data: Event data
+    :return: Current round
+    """
+    round_ids = list(round_data.keys())
+    round_counter = 0
+
+    for key in round_ids:
+        items = list(round_data.get(key).keys())
+        needed_points = get_item_point_value(items[0], round_data.get(key).get(items[0])) + \
+                        get_item_point_value(items[1], round_data.get(key).get(items[1])) + \
+                        get_item_point_value(items[2], round_data.get(key).get(items[2])) + \
+                        get_item_point_value(items[3], round_data.get(key).get(items[3]))
+        if needed_points <= points:
+            round_counter += 1
+            points -= needed_points
+        else:
+            break
+
+    return round_counter
+
+def get_mul_production_time(items: dict):
+    """
+    Calculates the time in hours needed to produce multiple items with max buildings by one player without boosts
+    and without regarding that multiple items could be produced in the same building
+    :param items: Dictionary containing items {(item1, amount_item1), ...}
+    :return: Production time in hours
+    """
+    total_time = 0
+
+    for item in list(items.keys()):
+        total_time += get_production_time(item, items.get(item))
+
+    return total_time
+
+
+def get_production_time(item, amount):
+    """
+    Calculates the time in hours needed to prodce the amount of items with max bildings by one player without boosts
+    :param item: Item
+    :param amount: Amount of item
+    :return: Production time in hours, , if item is unknown -1
     """
     if item not in deep_town_item_recipes:
         return -1
 
     recipe = deep_town_item_recipes.get(item)
     recipe_len = len(recipe)
-    production_time = recipe[0]
+    production_time = round(recipe[0] / recipe[1])  # Calculate production time for 1 item
     needed_ingredients = []  # (amount, item)
 
-    # Get all ingredients
+    # Get all ingredients for the main item
     for x in range(2, recipe_len):
         needed_ingredients.append(recipe[x])
 
-    # Find all sub reciepes
+    # Find all subrecipes
     done = False
     while not done:
+        # Find for each element in needed_ingredients the needed ingredients
         for x in range(len(needed_ingredients)):
             if needed_ingredients[x][1] in deep_town_raw_items:
                 continue
@@ -65,52 +133,33 @@ def get_product_time(item, amount):
                     continue
                 needed_ingredients.append(r[y])
 
+        # Check if each element in needed_ingredients is either a raw item or
+        # the sub recipes are already found and in needed_ingredients
         for z in range(len(needed_ingredients)):
             if needed_ingredients[z][1] not in deep_town_raw_items:
+                finised = True
                 p = deep_town_item_recipes.get(needed_ingredients[z][1])
-                finished = True
                 for u in range(2, len(p)):
                     if p[u] not in needed_ingredients:
-                        finished = False
+                        finised = False
                         break
 
-                if not finished:
+                if not finised:
                     break
             elif z == len(needed_ingredients) - 1:
                 done = True
 
-    for x in range(len(needed_ingredients)):
-        production_time += needed_ingredients[x][0]
-
-    return math.floor((((production_time * int(amount)) / 60) / 60) / 8)
+        return math.floor((production_time * int(amount) / 60 / 60 / 8))
 
 
-def predict_cur_round(points, data):
-    # {1:{item: amount}}
-    key_list = list(data.keys())
-    round_counter = 0
-
-    for key in key_list:
-        items = list(data.get(key).keys())
-        needed_points = get_point_value(items[0], data.get(key).get(items[0])) + \
-                        get_point_value(items[1], data.get(key).get(items[1])) + \
-                        get_point_value(items[2], data.get(key).get(items[2])) + \
-                        get_point_value(items[3], data.get(key).get(items[3]))
-        if needed_points <= points:
-            round_counter += 1
-            points -= needed_points
-        else:
-            break
-    return round_counter
-
-
+# Deep Town item Data
 deep_town_item_recipes = {
     # Name                      Time    Amount  Ingredient recepies
-    "Amber Bracelet": (120, 1, (1, "Polished Amber"), (1, "Silver Bar")),
-    "Copper Bar": (10, 1, (5, "Copper")),
-    "Copper Nail": (20, 10, (1, "Copper Bar")),
-    "Emerald Rind": (300, 1, (1, "Polished Emerald"), (1, "Gold Bar")),
-    "Graphite": (5, 1, (5, "Coal")),
+    "Amber Bracelet":           (120,   1,      (1, "Polished Amber"), (1, "Silver Bar")),
+    "Copper Bar":               (10,    1,      (5, "Copper")),
+    "Copper Nail":              (20,    10,     (1, "Copper Bar")),
+    "Emerald Rind":             (300,   1,      (1, "Polished Emerald"), (1, "Gold Bar")),
+    "Graphite":                 (5,     1,      (5, "Coal")),
     "Haircomb": (120, 1, (10, "Polished Alexandrite"), (15, "Polished Amethyst"), (1, "Silver Bar")),
     "Iron Bar": (15, 1, (5, "Iron")),
     "Maya Calendar": (120, 1, (10, "Gold Bar"), (2, "Silver Bar")),
