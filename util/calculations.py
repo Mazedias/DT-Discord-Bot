@@ -1,5 +1,5 @@
 """
-Contains methods process player or event data
+Contains methods to process player or event data
 """
 import math
 from util.data_api import get_total_donations, get_active_players
