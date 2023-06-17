@@ -48,7 +48,7 @@ def store_new_event(event_round, item1, amount_item1, item2, amount_item2, item3
     # Calculate each round until round 50
     event = {1: base_data}
     items = list(base_data.keys())
-    for x in range(2, 50):
+    for x in range(2, 65):
         event[x] = {
             items[0]: calc_round(x, base_data[items[0]]),
             items[1]: calc_round(x, base_data[items[1]]),
