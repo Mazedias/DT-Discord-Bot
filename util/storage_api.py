@@ -3,8 +3,9 @@ Interface to the storage files
 """
 import json
 import os
-from util.calculations import cald_base, calc_round
-from util.data_api import get_guild_name, http_req
+
+from util.calculations import cald_base, calc_round, predict_current_round
+from util.data_api import get_guild_name, get_total_donations, get_active_players
 
 
 def get_event_data() -> dict:
@@ -60,17 +61,92 @@ def store_new_event(event_round, item1, amount_item1, item2, amount_item2, item3
     __append_dict_to_file('util/data/event_data.txt', event)
 
 
-def store_event_results(guild_ids: list):
+def store_event_results(guild_ids: list) -> bool:
     """
     Stores event results
-    :return: None
+    :return: True if storing was successful, False if event is already stored
     """
     event_data = {}
-
     for guild_id in guild_ids:
-        event_data[get_guild_name(guild_id)] = http_req(guild_id)
+        guild_data = {
+            "round": predict_current_round(get_total_donations(guild_id), get_event_data()),
+            "donations": get_total_donations(guild_id),
+            "active": get_active_players(guild_id)
+        }
+        event_data[guild_id] = guild_data
+
+    # Prevent duplicates
+    if event_data == __read_last_line('util/data/event_history.txt'):
+        return False
 
     __append_dict_to_file('util/data/event_history.txt', event_data)
+    return True
+
+
+def get_event_review_eventrounds(guild_id) -> list:
+    """
+    Returns a list with the amount of rounds in the past events
+    :param guild_id: ID of the guild
+    :return: Amount of rounds
+    """
+    data = get_event_review()
+    events = list(data.keys())
+    event_rounds = []
+
+    for event in events:
+        event_rounds.append(data[event][f'{guild_id}']['round'])
+
+    return event_rounds
+
+
+def get_event_review_activeplayerlist(guild_id) -> list:
+    """
+    Returns a list with the amount of active players in the past events
+    :param guild_id: ID of the guild
+    :return: Active player list
+    """
+    data = get_event_review()
+    events = list(data.keys())
+    active = []
+
+    for event in events:
+        active.append(data[event][f'{guild_id}']['active'])
+
+    return active
+
+
+def get_event_review_donationlist(guild_id) -> list:
+    """
+    Returns a list with the total amount of donations in the past events
+    :param guild_id: ID of the guild
+    :return: Total donation list
+    """
+    data = get_event_review()
+    events = list(data.keys())
+    donations = []
+
+    for event in events:
+        donations.append(data[event][f'{guild_id}']['donations'])
+
+    return donations
+
+
+def get_event_review() -> dict:
+    """
+    Reads the data of the stored events and returns it
+    :return: Dictionary containing event data about the past events
+    """
+    data = {}
+
+    with open('util/data/event_history.txt', 'r') as file:
+        file_lines = file.readlines()
+
+    counter = 1
+    for line in file_lines:
+        data[counter] = json.loads(line.strip())
+        counter += 1
+
+    return data
 
 
 def store_event_item(data):

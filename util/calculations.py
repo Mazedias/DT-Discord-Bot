@@ -85,6 +85,7 @@ def predict_current_round(points: int, round_data: dict):
 
     return round_counter
 
+
 def get_mul_production_time(items: dict):
     """
     Calculates the time in hours needed to produce multiple items with max buildings by one player without boosts

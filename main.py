@@ -1,6 +1,6 @@
 import discord
 from discord import app_commands
-from command_embeds import guildeventdata_create_embed, eventdata_create_embed, save_event, event_item_info
+from command_embeds import guildeventdata_create_embed, eventdata_create_embed, save_event, event_item_info, overview_create_embedd
 from util.config import get_dc_token
 from util.storage_api import store_new_event
 
@@ -20,6 +20,18 @@ async def on_ready():
         print(f"Synced {len(synced)} command(s)")
     except Exception as e:
         print(e)
+
+
+@tree.command(name="overview", description="Zeigt Informationen zu den letzten Events an")
+async def everview(interaction: discord.Interaction):
+    with open('eventhistorygmc.png', "rb") as f1:
+        historyfile = discord.File(f1, filename="eventhistorygmc.png")
+    with open('eventactiveplayer.png', "rb") as f2:
+        activeplayerfile = discord.File(f2, filename="eventactiveplayer.png")
+    with open('eventrounds.png', "rb") as f3:
+        roundsfile = discord.File(f3, filename="eventrounds.png")
+
+    await interaction.response.send_message(files=[historyfile, activeplayerfile, roundsfile])
 
 
 @tree.command(name="eventdata", description="Zeigt Informationen zum letzten/aktuellen Event mehrerer Gilden")

@@ -5,8 +5,51 @@ from matplotlib import pyplot as plt
 from table2ascii import table2ascii as t2a, PresetStyle
 
 from util.data_api import get_donations, get_active_players
-from util.storage_api import get_event_data, store_event_item, store_event_results
+from util.storage_api import get_event_data, store_event_item, store_event_results, get_event_review_donationlist, \
+    get_event_review_activeplayerlist, get_event_review_eventrounds
 from util.calculations import get_mul_production_time, get_donation_mean, get_total_donations, predict_current_round
+
+
+def overview_create_embedd():
+    # Create plots
+    # Donation plot
+    donationslist_dad = np.array(get_event_review_donationlist(1))
+    donationslist_gmc = np.array(get_event_review_donationlist(75))
+    donationslist_pcz = np.array(get_event_review_donationlist(271))
+
+    plt.title("Event donation history")
+    plt.plot(donationslist_gmc, "blue", label="GMC", linestyle="-")
+    plt.plot(donationslist_dad, "green", label="DAD", linestyle="-.")
+    plt.plot(donationslist_pcz, "red", label="PCZ", linestyle=":")
+    plt.legend()
+    plt.savefig('eventhistorygmc.png', bbox_inches='tight')
+    plt.close()
+
+    # Active player plot
+    activeplayerlist_dad = np.array(get_event_review_activeplayerlist(1))
+    activeplayerlist_gmc = np.array(get_event_review_activeplayerlist(75))
+    activeplayerlist_pcz = np.array(get_event_review_activeplayerlist(271))
+
+    plt.title("Event active player history")
+    plt.plot(activeplayerlist_dad, "blue", label="GMC", linestyle="-")
+    plt.plot(activeplayerlist_gmc, "green", label="DAD", linestyle="-.")
+    plt.plot(activeplayerlist_pcz, "red", label="PCZ", linestyle=":")
+    plt.legend()
+    plt.savefig('eventactiveplayer.png', bbox_inches='tight')
+    plt.close()
+
+    # Reached round plot
+    eventrounds_dad = np.array(get_event_review_eventrounds(1))
+    eventrounds_gmc = np.array(get_event_review_eventrounds(75))
+    eventrounds_pcz = np.array(get_event_review_eventrounds(271))
+
+    plt.title("Event reached round history")
+    plt.plot(eventrounds_dad, "blue", label="GMC", linestyle="-")
+    plt.plot(eventrounds_gmc, "green", label="DAD", linestyle="-.")
+    plt.plot(eventrounds_pcz, "red", label="PCZ", linestyle=":")
+    plt.legend()
+    plt.savefig('eventrounds.png', bbox_inches='tight')
+    plt.close()
 
 
 def event_item_info():
