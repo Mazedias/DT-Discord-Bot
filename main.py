@@ -1,6 +1,8 @@
 import discord
+import time
 from discord import app_commands
-from command_embeds import guildeventdata_create_embed, eventdata_create_embed, save_event, event_item_info, overview_create_embedd
+from command_embeds import guildeventdata_create_embed, eventdata_create_embed, save_event, event_item_info, \
+    create_overview, create_summary
 from util.config import get_dc_token
 from util.storage_api import store_new_event
 
@@ -22,16 +24,21 @@ async def on_ready():
         print(e)
 
 
+@tree.command(name="summary", description="Gibt eine kurze Zusammenfassung des Events aus")
+async def summary(interaction: discord.Interaction):
+    summary_text = create_summary()
+    await interaction.response.send_message(content=summary_text)
+
+
 @tree.command(name="overview", description="Zeigt Informationen zu den letzten Events an")
 async def everview(interaction: discord.Interaction):
-    with open('eventhistorygmc.png', "rb") as f1:
-        historyfile = discord.File(f1, filename="eventhistorygmc.png")
-    with open('eventactiveplayer.png', "rb") as f2:
-        activeplayerfile = discord.File(f2, filename="eventactiveplayer.png")
-    with open('eventrounds.png', "rb") as f3:
-        roundsfile = discord.File(f3, filename="eventrounds.png")
+    create_overview()
+    with open('eventactiveplayer.png', "rb") as f1:
+        activeplayerfile = discord.File(f1, filename="eventactiveplayer.png")
+    with open('eventrounds.png', "rb") as f2:
+        roundsfile = discord.File(f2, filename="eventrounds.png")
 
-    await interaction.response.send_message(files=[historyfile, activeplayerfile, roundsfile])
+    await interaction.response.send_message(files=[activeplayerfile, roundsfile])
 
 
 @tree.command(name="eventdata", description="Zeigt Informationen zum letzten/aktuellen Event mehrerer Gilden")
@@ -70,7 +77,7 @@ async def newevent(interaction: discord.Interaction,
     await interaction.response.send_message("Ok.")
 
 
-@tree.command(name="saveevent", description="!!ADMINS ONLY!! Speichert die Daten zum letzten Event.")
+@tree.command(name="saveevent", description="Speichert die Daten zum letzten Event.")
 async def saveevent(interaction: discord.Interaction):
     embed = save_event()
     await interaction.response.send_message(embed=embed)

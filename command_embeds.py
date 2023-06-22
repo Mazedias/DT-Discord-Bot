@@ -1,30 +1,29 @@
+import datetime
+
 import discord
 import numpy as np
-import datetime
 from matplotlib import pyplot as plt
 from table2ascii import table2ascii as t2a, PresetStyle
 
-from util.data_api import get_donations, get_active_players
-from util.storage_api import get_event_data, store_event_item, store_event_results, get_event_review_donationlist, \
-    get_event_review_activeplayerlist, get_event_review_eventrounds
 from util.calculations import get_mul_production_time, get_donation_mean, get_total_donations, predict_current_round
+from util.data_api import get_donations, get_active_players
+from util.storage_api import get_event_data, store_event_item, store_event_results, get_event_review_activeplayerlist, \
+    get_event_review_eventrounds
 
 
-def overview_create_embedd():
+def create_summary():
+    g_id = 75
+    d_id = 1
+    p_id = 271
+    message = f"Aktueller Stand: \n```" \
+              f"-> Wir: Runde {predict_current_round(get_total_donations(g_id), get_event_data())}\n" \
+              f"-> Permonici: Runde {predict_current_round(get_total_donations(p_id), get_event_data())}\n" \
+              f"-> Deep and Dirty: Runde {predict_current_round(get_total_donations(d_id), get_event_data())}```"
+    return message
+
+
+def create_overview():
     # Create plots
-    # Donation plot
-    donationslist_dad = np.array(get_event_review_donationlist(1))
-    donationslist_gmc = np.array(get_event_review_donationlist(75))
-    donationslist_pcz = np.array(get_event_review_donationlist(271))
-
-    plt.title("Event donation history")
-    plt.plot(donationslist_gmc, "blue", label="GMC", linestyle="-")
-    plt.plot(donationslist_dad, "green", label="DAD", linestyle="-.")
-    plt.plot(donationslist_pcz, "red", label="PCZ", linestyle=":")
-    plt.legend()
-    plt.savefig('eventhistorygmc.png', bbox_inches='tight')
-    plt.close()
-
     # Active player plot
     activeplayerlist_dad = np.array(get_event_review_activeplayerlist(1))
     activeplayerlist_gmc = np.array(get_event_review_activeplayerlist(75))
