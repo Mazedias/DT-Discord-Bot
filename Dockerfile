@@ -6,5 +6,8 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY ./src/ .
+
+RUN bash -c "mkdir -p ./util/data"
+
 CMD ["python3", "main.py"]
