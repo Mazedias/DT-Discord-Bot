@@ -184,10 +184,14 @@ def __read_last_line(path) -> dict:
     """
     Reads a file and returns the last line as dictionary
     :param path: Path to file
-    :return: Last line of the file as a dictionary
+    :return: Last line of the file as a dictionary or empty dictionary if file did not exits
     """
-    with open(path, "r") as file:
-        return json.loads(file.readlines()[-1])
+    try:
+        with open(path, "r") as file:
+            return json.loads(file.readlines()[-1])
+    except FileNotFoundError as e:
+        with open(path, "x") as file:
+            return json.loads("{}")
 
 
 def __clear_file(path) -> bool:

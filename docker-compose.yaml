@@ -1,0 +1,7 @@
+version: "3"
+services:
+  dtbot:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./data/:/app/util/data/

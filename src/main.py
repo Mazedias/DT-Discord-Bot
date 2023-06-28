@@ -43,10 +43,11 @@ async def everview(interaction: discord.Interaction):
 
 @tree.command(name="eventdata", description="Zeigt Informationen zum letzten/aktuellen Event mehrerer Gilden")
 async def eventdata(interaction: discord.Interaction):
+    await interaction.response.send_message("Working...")
     embed = eventdata_create_embed()
     with open('compdondistibution.png', "rb") as fh:
         f = discord.File(fh, filename="compdondistibution.png")
-    await interaction.response.send_message(embed=embed, file=f)
+    await interaction.edit_original_response(embed=embed, attachments=[f])
 
 
 @tree.command(name="guildeventdata", description="Zeigt Informationen zum letzen/aktuellen Event unserer Gilde")
