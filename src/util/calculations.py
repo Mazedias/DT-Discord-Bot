@@ -306,7 +306,7 @@ deep_town_items_prices = {
     "Grape": 1500,
     "Liana": 1700,
     "Steel Plate": 1800,
-    "Ciruits": 2070,
+    "Circuits": 2070,
     "Zip Drive": 2200,
     "Gunpowder": 2500,
     "Titanium Bar": 3000,
