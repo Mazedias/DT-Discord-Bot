@@ -73,10 +73,11 @@ def store_event_results(guild_ids: list) -> bool:
             "donations": get_total_donations(guild_id),
             "active": get_active_players(guild_id)
         }
-        event_data[guild_id] = guild_data
+        event_data[f"{guild_id}"] = guild_data
 
     # Prevent duplicates
-    if event_data == __read_last_line('util/data/event_history.txt'):
+    last_stored_event = __read_last_line('util/data/event_history.txt')
+    if last_stored_event == event_data:
         return False
 
     __append_dict_to_file('util/data/event_history.txt', event_data)
