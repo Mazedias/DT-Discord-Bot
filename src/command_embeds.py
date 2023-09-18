@@ -85,12 +85,15 @@ def save_event() -> discord.Embed:
         embed.add_field(name="Fehler", value="Wärend einem Laufendem Event kann nicht gespeichert werden!")
         return embed
 
-    store_event_results([1, 75, 271])
+    success_status = store_event_results([1, 75, 271])
 
     embed = discord.Embed(title="Eventübersicht", colour=discord.Colour(0xbf6b0a))
     embed.set_author(name="Event Bot", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
     embed.set_footer(text="Calculation finished...", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
-    embed.add_field(name="Done", value="Die Ergebnisse des letzten Events wurden gespeichert")
+    if success_status:
+        embed.add_field(name="Done", value="Die Ergebnisse des letzten Events wurden gespeichert")
+    else:
+        embed.add_field(name="Error", value="Die Ergebnisse wurden nicht gespeichet! (Wahrscheinlich weil schon gespeichert wurde.)")
     return embed
 
 
