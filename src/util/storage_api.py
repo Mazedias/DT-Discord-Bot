@@ -4,8 +4,8 @@ Interface to the storage files
 import json
 import os
 
-from util.calculations import cald_base, calc_round, predict_current_round
-from util.data_api import get_guild_name, get_total_donations, get_active_players
+from src.util.calculations import cald_base, calc_round, predict_current_round
+from src.util.data_api import get_guild_name, get_total_donations, get_active_players
 
 
 def get_event_data() -> dict:

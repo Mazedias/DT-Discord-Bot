@@ -2,7 +2,8 @@
 Contains methods to process player or event data
 """
 import math
-from util.data_api import get_total_donations, get_active_players
+from src.util.data_api import get_total_donations, get_active_players
+from src.new.util.game.dt_data import get_item
 
 
 def get_donation_mean(guild_id) -> int:
@@ -41,10 +42,12 @@ def get_item_price(item, amount):
     :param amount: Amount of the item
     :return: Value of the items, if item is unknown -1
     """
-    if item not in deep_town_items_prices:
+    try:
+        matched_item = get_item(item)
+    except LookupError:
         return -1
 
-    return deep_town_items_prices.get(item) * amount
+    return matched_item.price * amount
 
 
 def get_item_point_value(item, amount):
@@ -54,10 +57,12 @@ def get_item_point_value(item, amount):
     :param amount: Amount of the item
     :return: Point value of the items, if item is unknown -1
     """
-    if item not in deep_town_items_prices:
+    try:
+        matched_item = get_item(item)
+    except LookupError:
         return -1
 
-    return math.floor(get_item_price(item, amount)/1000)
+    return math.floor((matched_item.price * amount)/1000)
 
 
 def predict_current_round(points: int, round_data: dict):
