@@ -4,4 +4,4 @@ services:
     build: .
     restart: unless-stopped
     volumes:
-      - ./data/:/app/util/data/
+      - ./data/:/app/storage/files/

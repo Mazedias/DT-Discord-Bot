@@ -1,0 +1,84 @@
+bot_setup:
+  periodic_time_frame: null
+  send_periodic_message_during_events: false
+gamedata:
+  competition:
+    1: DAD
+    271: PCZ
+  events:
+    2023:
+      51:
+        a_item1: 1000
+        a_item2: 1000
+        a_item3: 1300
+        a_item4: 50
+        active: false
+        competition:
+          DAD:
+          - 40
+          - 2445252
+          - 16
+          PCZ:
+          - 45
+          - 4640462
+          - 37
+        donations: 9670809
+        item1:
+        - Insulated Wire
+        - 750
+        - false
+        item2:
+        - Polished Amber
+        - 70
+        - false
+        item3:
+        - Aluminium Tank
+        - 450
+        - false
+        item4:
+        - Haircomb
+        - 14000
+        - false
+        players: 29
+        round: 51
+      52:
+        a_item1: 1300
+        a_item2: 5
+        a_item3: 1000
+        a_item4: 10
+        active: true
+        competition: {}
+        donations: 0
+        item1:
+        - Glass
+        - 450
+        - false
+        item2:
+        - Tree
+        - 193
+        - false
+        item3:
+        - Lamp
+        - 760
+        - false
+        item4:
+        - Electrical Engine
+        - 745000
+        - false
+        players: 0
+        round: 0
+  guild:
+    id: 75
+    label: GMC
+  players:
+  - AlpiHD:
+    - <@273479261308846110>
+    - true
+    - false
+  - TheRealMazedias:
+    - <@273479261308846110>
+    - true
+    - true
+startup:
+  bot_token: MTExNzA3MDIxMzkwNTY0OTcxNw.G5F5Ka.hQEpuQp1kyVQ5dtPn23AGpHct9StUigwstCYhM
+  periodic_channel_id: 1

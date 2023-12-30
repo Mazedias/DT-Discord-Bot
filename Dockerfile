@@ -8,6 +8,6 @@ RUN pip install -r requirements.txt
 
 COPY ./src/ .
 
-RUN bash -c "mkdir -p ./util/data"
+RUN bash -c "mkdir -p ./storage/files"
 
 CMD ["python3", "main.py"]

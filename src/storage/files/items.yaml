@@ -1,0 +1,793 @@
+items:
+  Accumulator:
+    price: 9000
+    raw: false
+  Alexandrite:
+    price: 19
+    raw: true
+  Aluminium:
+    price: 5
+    raw: true
+  Aluminium Bar:
+    price: 50
+    raw: false
+  Aluminium Bottle:
+    price: 55
+    raw: false
+  Aluminium Tank:
+    price: 450
+    raw: false
+  Amber:
+    price: 4
+    raw: true
+  Amber Bracelet:
+    price: 280
+    raw: false
+  Amber Charger:
+    price: 4
+    raw: false
+  Amber Insulation:
+    price: 125
+    raw: false
+  Amethyst:
+    price: 18
+    raw: true
+  Battery:
+    price: 200
+    raw: false
+  Bomb:
+    price: 55500
+    raw: false
+  Carved Pumpkin:
+    price: 1100
+    raw: false
+  Chipset:
+    price: 40000
+    raw: false
+  Chlorine:
+    price: 600
+    raw: true
+  Circuits:
+    price: 2070
+    raw: false
+  Clean Water:
+    price: 1200
+    raw: false
+  Coal:
+    price: 1
+    raw: true
+  Compressor:
+    price: 44000
+    raw: false
+  Copper:
+    price: 2
+    raw: true
+  Copper Bar:
+    price: 25
+    raw: false
+  Copper Knife:
+    price: 300
+    raw: false
+  Copper Nail:
+    price: 7
+    raw: false
+  Corona Discharge Tube:
+    price: 49000
+    raw: false
+  Cosmic Ice:
+    price: 100
+    raw: true
+  Defective Pumpkin:
+    price: 100
+    raw: false
+  Diamond:
+    price: 18
+    raw: true
+  Diamond Cutter:
+    price: 5000
+    raw: false
+  Diethyl Ether:
+    price: 17000
+    raw: false
+  Dry Ice:
+    price: 25000
+    raw: false
+  Electrical Engine:
+    price: 745000
+    raw: false
+  Emerald:
+    price: 12
+    raw: true
+  Emerald Ring:
+    price: 450
+    raw: false
+  Enhanced Helium 3:
+    price: 190000
+    raw: false
+  Ethanol:
+    price: 4200
+    raw: false
+  Flora Defender:
+    price: 5000
+    raw: false
+  Gas Cylinder:
+    price: 30000
+    raw: false
+  Gear:
+    price: 18500
+    raw: false
+  Glass:
+    price: 450
+    raw: false
+  Gold:
+    price: 10
+    raw: true
+  Gold Bar:
+    price: 250
+    raw: false
+  Grape:
+    price: 1500
+    raw: false
+  Grape Seed:
+    price: 1200
+    raw: true
+  Graphite:
+    price: 15
+    raw: false
+  Green Laser:
+    price: 400
+    raw: false
+  Gunpowder:
+    price: 2500
+    raw: false
+  Haircomb:
+    price: 14000
+    raw: false
+  Helium 3:
+    price: 400
+    raw: true
+  Hydrochloric Acid:
+    price: 12000
+    raw: false
+  Hydrogen:
+    price: 400
+    raw: true
+  Insulated Wire:
+    price: 750
+    raw: false
+  Iron:
+    price: 3
+    raw: true
+  Iron Bar:
+    price: 40
+    raw: false
+  LCD Monitor:
+    price: 90000
+    raw: false
+  Lab Flask:
+    price: 800
+    raw: false
+  Lamp:
+    price: 760
+    raw: false
+  Liana:
+    price: 1700
+    raw: false
+  Liana Seed:
+    price: 1000
+    raw: true
+  Liquid Nitrogen:
+    price: 12500
+    raw: false
+  Lutetium:
+    price: 13500
+    raw: false
+  Lutetium Bar:
+    price: 68000
+    raw: false
+  Lutetium Ore:
+    price: 500
+    raw: true
+  Magnet:
+    price: 300000
+    raw: false
+  Magnetite Bar:
+    price: 137000
+    raw: false
+  Magnetite Ore:
+    price: 12500
+    raw: false
+  Maya Calendar:
+    price: 6000
+    raw: false
+  Mirror:
+    price: 450
+    raw: false
+  Mirror Laser:
+    price: 5400
+    raw: false
+  Motherboard:
+    price: 17000
+    raw: false
+  Nitrogen:
+    price: 300
+    raw: true
+  Nitrogen Tank:
+    price: 110000
+    raw: false
+  Obsidian:
+    price: 20
+    raw: true
+  Obsidian Knife:
+    price: 32000
+    raw: false
+  Oil:
+    price: 21
+    raw: true
+  Optic Fiber:
+    price: 10500
+    raw: false
+  Oxygen:
+    price: 900
+    raw: true
+  Oxygen Cylinder:
+    price: 173000
+    raw: false
+  Pine Seed:
+    price: 11000
+    raw: false
+  Pine Tree:
+    price: 35000
+    raw: false
+  Plastic Plate:
+    price: 40000
+    raw: false
+  Platinum:
+    price: 13
+    raw: true
+  Polished Alexandrite:
+    price: 270
+    raw: false
+  Polished Amber:
+    price: 70
+    raw: false
+  Polished Amethyst:
+    price: 250
+    raw: false
+  Polished Diamond:
+    price: 300
+    raw: false
+  Polished Emerald:
+    price: 160
+    raw: false
+  Polished Obsidian:
+    price: 280
+    raw: false
+  Polished Ruby:
+    price: 250
+    raw: false
+  Polished Sapphire:
+    price: 230
+    raw: false
+  Polished Topaz:
+    price: 200
+    raw: false
+  Primordial Soup:
+    price: 40000
+    raw: false
+  Pumpkin:
+    price: 50
+    raw: true
+  Refined Oil:
+    price: 16500
+    raw: false
+  Rubber:
+    price: 4000
+    raw: false
+  Ruby:
+    price: 15
+    raw: true
+  Sapphire:
+    price: 16
+    raw: true
+  Sapphire Crystal Glass:
+    price: 5000
+    raw: false
+  Seawater:
+    price: 4900
+    raw: false
+  Silicon:
+    price: 100
+    raw: true
+  Silver:
+    price: 7
+    raw: true
+  Silver Bar:
+    price: 200
+    raw: false
+  Sodium:
+    price: 100
+    raw: true
+  Sodium Chloride:
+    price: 100
+    raw: true
+  Solar Panel:
+    price: 69000
+    raw: false
+  Solid Propellant:
+    price: 27000
+    raw: false
+  Steel Bar:
+    price: 150
+    raw: false
+  Steel Pipe:
+    price: 4300
+    raw: false
+  Steel Plate:
+    price: 1800
+    raw: false
+  Sulfur:
+    price: 100
+    raw: true
+  Sulfuric Acid:
+    price: 3500
+    raw: false
+  Titanium:
+    price: 260
+    raw: false
+  Titanium Bar:
+    price: 3000
+    raw: false
+  Titanium Ore:
+    price: 19
+    raw: true
+  Topaz:
+    price: 14
+    raw: true
+  Toxic Bomb:
+    price: 77500
+    raw: false
+  Tree:
+    price: 193
+    raw: false
+  Tree Seed:
+    price: 10
+    raw: true
+  Uranium:
+    price: 22
+    raw: true
+  Uranium Rod:
+    price: 17000
+    raw: false
+  Water:
+    price: 5
+    raw: true
+  Wire:
+    price: 15
+    raw: false
+  Zeolit:
+    price: 5000
+    raw: false
+recieps:
+  Accumulator:
+    amount: 1
+    resources:
+      Sodium: 20
+      Sulfur: 20
+    time: 180
+  Aluminium Bar:
+    amount: 1
+    resources:
+      Aluminium: 5
+    time: 15
+  Aluminium Bottle:
+    amount: 1
+    resources:
+      Aluminium Bar: 1
+    time: 30
+  Aluminium Tank:
+    amount: 5
+    resources:
+      Aluminium Bar: 3
+    time: 120
+  Amber Bracelet:
+    amount: 1
+    resources:
+      Polished Amber: 1
+      Silver Bar: 1
+    time: 120
+  Amber Charger:
+    amount: 1
+    resources:
+      Amber: 1
+    time: 5
+  Amber Insulation:
+    amount: 1
+    resources:
+      Aluminium Bottle: 1
+      Amber: 10
+    time: 20
+  Battery:
+    amount: 1
+    resources:
+      Amber: 1
+      Copper Bar: 5
+      Iron Bar: 1
+    time: 120
+  Bomb:
+    amount: 1
+    resources:
+      Gunpowder: 10
+      Steel Bar: 5
+    time: 180
+  Circuits:
+    amount: 1
+    resources:
+      Copper Bar: 20
+      Graphite: 50
+      Iron Bar: 10
+    time: 180
+  Clean Water:
+    amount: 1
+    resources:
+      Lab Flask: 1
+      Water: 1
+    time: 600
+  Compressor:
+    amount: 1
+    resources:
+      Iron Bar: 5
+      Refined Oil: 2
+      Rubber: 1
+    time: 180
+  Copper Bar:
+    amount: 1
+    resources:
+      Copper: 5
+    time: 10
+  Copper Nail:
+    amount: 1
+    resources:
+      Copper Bar: 1
+    time: 20
+  Diamond Cutter:
+    amount: 1
+    resources:
+      Polished Diamond: 5
+      Steel Plate: 1
+    time: 30
+  Diethyl Ether:
+    amount: 1
+    resources:
+      Ethanol: 1
+      Sulfuric Acid: 1
+    time: 60
+  Electrical Engine:
+    amount: 1
+    resources:
+      Aluminium Bar: 20
+      Insulated Wire: 50
+      Magnet: 1
+    time: 300
+  Emerald Ring:
+    amount: 1
+    resources:
+      Gold Bar: 1
+      Polished Emerald: 1
+    time: 300
+  Enhanced Helium 3:
+    amount: 1
+    resources:
+      Aluminium Bottle: 1
+      Compressor: 1
+      Helium 3: 100
+    time: 1800
+  Ethanol:
+    amount: 1
+    resources:
+      Aluminium Bottle: 1
+      Grape: 2
+    time: 1800
+  Gas Cylinder:
+    amount: 1
+    resources:
+      Aluminium Tank: 1
+      Plastic Plate: 1
+      Steel Plate: 1
+    time: 180
+  Gear:
+    amount: 1
+    resources:
+      Diamond Cutter: 1
+      Titanium Bar: 1
+    time: 80
+  Glass:
+    amount: 1
+    resources:
+      Silicon: 2
+    time: 60
+  Gold Bar:
+    amount: 1
+    resources:
+      Gold: 5
+    time: 60
+  Grape:
+    amount: 2
+    resources:
+      Grape Seed: 1
+      Water: 15
+    time: 1800
+  Graphite:
+    amount: 1
+    resources:
+      Coal: 5
+    time: 5
+  Green Laser:
+    amount: 5
+    resources:
+      Insulated Wire: 1
+      Lamp: 1
+      Polished Emerald: 1
+    time: 20
+  Gunpowder:
+    amount: 20
+    resources:
+      Diethyl Ether: 1
+      Sulfuric Acid: 2
+      Tree: 2
+    time: 120
+  Haircomb:
+    amount: 1
+    resources:
+      Polished Alexandrite: 10
+      Polished Amethyst: 15
+      Silver Bar: 1
+    time: 120
+  Hydrogen:
+    amount: 2
+    resources:
+      Clean Water: 1
+    time: 900
+  Insulated Wire:
+    amount: 1
+    resources:
+      Amber: 1
+      Wire: 1
+    time: 200
+  Iron Bar:
+    amount: 1
+    resources:
+      Iron: 5
+    time: 15
+  LCD Monitor:
+    amount: 1
+    resources:
+      Insulated Wire: 20
+      Sapphire Crystal Glass: 5
+      Silicon: 5
+    time: 300
+  Lab Flask:
+    amount: 1
+    resources:
+      Glass: 1
+    time: 60
+  Lamp:
+    amount: 1
+    resources:
+      Copper Bar: 5
+      Graphite: 20
+      Wire: 10
+    time: 80
+  Liana:
+    amount: 1
+    resources:
+      Liana Seed: 1
+      Water: 20
+    time: 1800
+  Liquid Nitrogen:
+    amount: 4
+    resources:
+      Aluminium Bottle: 1
+      Compressor: 1
+      Nitrogen: 10
+    time: 120
+  Magnet:
+    amount: 1
+    resources:
+      Magnetite Bar: 1
+    time: 120
+  Magnetite Bar:
+    amount: 1
+    resources:
+      Magnetite Ore: 5
+    time: 60
+  Magnetite Ore:
+    amount: 1
+    resources:
+      Green Laser: 5
+      Iron Bar: 1
+      Oxygen: 5
+    time: 360
+  Maya Calendar:
+    amount: 1
+    resources:
+      Gold Bar: 10
+      Silver Bar: 2
+    time: 120
+  Mirror:
+    amount: 2
+    resources:
+      Glass: 1
+      Silver Bar: 1
+    time: 120
+  Mirror Laser:
+    amount: 2
+    resources:
+      Battery: 1
+      Lamp: 1
+      Mirror: 3
+    time: 120
+  Motherboard:
+    amount: 1
+    resources:
+      Circuits: 3
+      Gold Bar: 1
+      Silicon: 3
+    time: 1800
+  Obsidian Knife:
+    amount: 1
+    resources:
+      Polished Obsidian: 50
+      Silver Bar: 1
+      Tree: 2
+    time: 120
+  Optic Fiber:
+    amount: 10
+    resources:
+      Oxygen: 10
+      Plastic Plate: 1
+      Silicon: 10
+    time: 120
+  Oxygen Cylinder:
+    amount: 1
+    resources:
+      Oxygen: 5
+      Silicon: 10
+    time: 120
+  Plastic Plate:
+    amount: 1
+    resources:
+      Coal: 50
+      Green Laser: 1
+      Refined Oil: 1
+    time: 600
+  Polished Alexandrite:
+    amount: 1
+    resources:
+      Alexandrite: 5
+    time: 60
+  Polished Amber:
+    amount: 1
+    resources:
+      Amber: 5
+    time: 30
+  Polished Amethyst:
+    amount: 1
+    resources:
+      Amethyst: 5
+    time: 60
+  Polished Diamond:
+    amount: 1
+    resources:
+      Diamond: 5
+    time: 60
+  Polished Emerald:
+    amount: 1
+    resources:
+      Emerald: 5
+    time: 30
+  Polished Obsidian:
+    amount: 1
+    resources:
+      Obsidian: 5
+    time: 60
+  Polished Ruby:
+    amount: 1
+    resources:
+      Ruby: 5
+    time: 60
+  Polished Sapphire:
+    amount: 1
+    resources:
+      Sapphire: 5
+    time: 60
+  Polished Topaz:
+    amount: 1
+    resources:
+      Topaz: 5
+    time: 60
+  Refined Oil:
+    amount: 1
+    resources:
+      Hydrogen: 10
+      Lab Flask: 1
+      Oil: 10
+    time: 1800
+  Rubber:
+    amount: 1
+    resources:
+      Liana: 1
+    time: 1800
+  Sapphire Crystal Glass:
+    amount: 1
+    resources:
+      Sapphire: 10
+    time: 120
+  Silver Bar:
+    amount: 1
+    resources:
+      Silver: 5
+    time: 60
+  Solar Panel:
+    amount: 1
+    resources:
+      Glass: 50
+      Rubber: 1
+      Silicon: 10
+    time: 120
+  Solid Propellant:
+    amount: 1
+    resources:
+      Aluminium Bar: 10
+      Rubber: 3
+    time: 1200
+  Steel Bar:
+    amount: 1
+    resources:
+      Graphite: 1
+      Iron Bar: 1
+    time: 45
+  Steel Pipe:
+    amount: 1
+    resources:
+      Steel Plate: 1
+    time: 60
+  Steel Plate:
+    amount: 1
+    resources:
+      Steel Bar: 5
+    time: 120
+  Sulfuric Acid:
+    amount: 1
+    resources:
+      Clean Water: 1
+      Sulfur: 2
+    time: 1800
+  Titanium:
+    amount: 50
+    resources:
+      Sulfuric Acid: 1
+      Titanium Ore: 100
+    time: 20
+  Titanium Bar:
+    amount: 1
+    resources:
+      Titanium: 5
+    time: 60
+  Tree:
+    amount: 10
+    resources:
+      Tree Seed: 1
+      Water: 10
+    time: 1800
+  Uranium Rod:
+    amount: 1
+    resources:
+      Sodium: 10
+      Uranium: 20
+    time: 120
+  Wire:
+    amount: 5
+    resources:
+      Copper Bar: 1
+    time: 30

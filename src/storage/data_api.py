@@ -5,6 +5,36 @@ import requests
 import json
 
 
+def get_players(guild_id) -> list:
+    """
+    Collects data with __http_req() and creates a list containing all ingame players names that are in the 
+    guild with the guild_id
+    """
+    http_data = http_req(guild_id).get("players").get("data")
+    
+    playernames = []
+
+    for player in http_data:
+        playernames.append(player[1])
+    
+    return playernames
+
+
+def get_inactive_players(guild_id) -> list:
+    """
+    Collects data with __http_req() and creates a list containing all ingame names of players with zero
+    last event donations
+    """
+    http_data = http_req(guild_id).get("players").get("data")
+
+    inactive_players = []
+    for player in http_data:
+        if int(player[13]) == 0:
+            inactive_players.append(player[1])
+        
+    return inactive_players
+
+
 def get_donations(guild_id) -> list:
     """
     Collects data with __http_req() and creates a sorted list of length 50 containing the amount of donations

@@ -2,6 +2,15 @@ from dataclasses import dataclass
 
 
 @dataclass
+class Guild:
+    """
+    Dataclass to represent an ingame guild
+    """
+    id: int
+    lable: str
+
+
+@dataclass
 class Item:
     """
     Dataclass to represent an ingame item
@@ -19,7 +28,7 @@ class Reciep:
     item: Item
     time: int
     amount: int
-    resources: list[(int, Item)]  # (amount, Item)
+    resources: dict[str : int]  # (ItemName : amount)
 
 
 @dataclass
@@ -28,9 +37,9 @@ class Player:
     Dataclass to represent a player
     """
     ingame_name: str
-    last_event_donation: int
-    donation_ranking: int
     discord_id: str
+    temp_ping: bool
+    perma_ping: bool
 
 
 @dataclass
@@ -44,7 +53,7 @@ class Event:
     active_players: int
     overall_donations: int
     active: bool
-    competition: dict[str, (int, int)]
+    competition: dict[str, list[int]]
     first_item: Item
     first_item_base_amount: int
     second_item: Item
