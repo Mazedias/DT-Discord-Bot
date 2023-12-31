@@ -6,8 +6,6 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY ./src/ .
 
-RUN bash -c "mkdir -p ./storage/files"
-
-CMD ["python3", "./src/main.py"]
+CMD ["python3", "main.py"]
