@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    filename="./storage/files/logs.log",
+    filename="./src/storage/files/logs.log",
     filemode="a"
 )
 

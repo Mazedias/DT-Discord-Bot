@@ -4,7 +4,7 @@ bot_setup:
 gamedata:
   competition: {}
   events: {}
-  guild: {}
+  guild: []
   players: []
 startup:
   bot_token: TODO

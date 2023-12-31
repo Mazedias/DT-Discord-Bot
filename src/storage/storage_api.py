@@ -4,8 +4,8 @@ import storage.logging_config as logger
 from game.dataclasses import Guild, Player, Event, Item, Reciep
 
 
-CONFIG_PATH = "./storage/files/config.yaml"
-ITEMS_PATH = "./storage/files/items.yaml"
+CONFIG_PATH = "./src/storage/files/config.yaml"
+ITEMS_PATH = "./src/storage/files/items.yaml"
 
 logger = logger.logger
 
