@@ -108,7 +108,7 @@ async def execute_eventdata(interaction: discord.Interaction):
         )
     
     plt.legend()
-    plt.savefig("./src/storage/files/compDonDistribution.png", bbox_inches="tight")
+    plt.savefig("./storage/files/compDonDistribution.png", bbox_inches="tight")
     plt.close()
     
     embed = get_detailed_embed(
@@ -118,7 +118,7 @@ async def execute_eventdata(interaction: discord.Interaction):
     )
     embed.set_image(url="attachment://compDonDistribution.png")
 
-    with open('./src/storage/files/compDonDistribution.png', "rb") as fh:
+    with open('./storage/files/compDonDistribution.png', "rb") as fh:
         f = discord.File(fh, filename="compDonDistribution.png")
 
     await interaction.edit_original_response(content=None, embed=embed, attachments=[f])
@@ -223,9 +223,9 @@ async def execute_iteminfo(interaction: discord.Interaction, start: int, limit: 
     df = df.iloc[(start-1):]
     
     df_styled = df.style.background_gradient()
-    dfi.export(df_styled, './src/storage/files/df_styled.png', table_conversion="matplotlib")
+    dfi.export(df_styled, './storage/files/df_styled.png', table_conversion="matplotlib")
 
-    df.to_csv(path_or_buf='./src/storage/files/iteminfo.csv')
+    df.to_csv(path_or_buf='./storage/files/iteminfo.csv')
 
-    await interaction.edit_original_response(embed=None, attachments=[discord.File('./src/storage/files/df_styled.png'), discord.File('./src/storage/files/iteminfo.csv')])
+    await interaction.edit_original_response(embed=None, attachments=[discord.File('./storage/files/df_styled.png'), discord.File('./storage/files/iteminfo.csv')])
 
