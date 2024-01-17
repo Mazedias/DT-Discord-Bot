@@ -136,10 +136,10 @@ async def execute_new_event(interaction: discord.Interaction,
     try:
         add_event(
             event_round, 
-            item1, cald_base(int(event_round), int(amount1)), 
-            item2, cald_base(int(event_round), int(amount2)), 
-            item3, cald_base(int(event_round), int(amount3)), 
-            item4, cald_base(int(event_round), int(amount4))
+            item1, event_round if event_round==1 else cald_base(int(event_round), int(amount1)), 
+            item2, event_round if event_round==1 else cald_base(int(event_round), int(amount2)), 
+            item3, event_round if event_round==1 else cald_base(int(event_round), int(amount3)), 
+            item4, event_round if event_round==1 else cald_base(int(event_round), int(amount4))
         )
         
     except (NameError, LookupError) as e:
