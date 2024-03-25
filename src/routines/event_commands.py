@@ -47,7 +47,8 @@ async def execute_summary(interaction: discord.Interaction):
             info_output = f"{info_output}\n{p.discord_id}"
             inactive_players.remove(p.ingame_name)
     
-    info_output = f"{info_output}\n\nUnlinked Inactive Players:"
+    info_output = f"{info_output}```"
+    info_output = f"{info_output}```Unlinked Inactive Players:"
 
     for p in inactive_players:
         info_output = f"{info_output}\n{p}"
@@ -134,13 +135,22 @@ async def execute_new_event(interaction: discord.Interaction,
     await interaction.response.send_message(embed=IN_PROCESS_EMBED)
     
     try:
-        add_event(
-            event_round, 
-            item1, event_round if event_round==1 else cald_base(int(event_round), int(amount1)), 
-            item2, event_round if event_round==1 else cald_base(int(event_round), int(amount2)), 
-            item3, event_round if event_round==1 else cald_base(int(event_round), int(amount3)), 
-            item4, event_round if event_round==1 else cald_base(int(event_round), int(amount4))
-        )
+        if int(event_round) == 1:
+            add_event(
+                event_round, 
+                item1, int(amount1), 
+                item2, int(amount2), 
+                item3, int(amount3), 
+                item4, int(amount4)
+            )
+        else: 
+            add_event(
+                event_round, 
+                item1, cald_base(int(event_round), int(amount1)), 
+                item2, cald_base(int(event_round), int(amount2)), 
+                item3, cald_base(int(event_round), int(amount3)), 
+                item4, cald_base(int(event_round), int(amount4))
+            )
         
     except (NameError, LookupError) as e:
         await interaction.edit_original_response(content=None, embed=get_detailed_error_embed(f"Error: {e}"))
